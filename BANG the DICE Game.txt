@@ -1,0 +1,63 @@
+BANG the DICE Game
+
+5 dices
+
+3 Roles (4 Players)
+- 1 Sheriff: must eliminate all Outlaws and the Renegade(s)
+- 2 Outlaws: must eliminate the Sheriff
+- 1 Renegade: must be the last character in play
+
+Roles are randomized.
+Sheriff's Card is revealed.
+All players can see their role but must keep it secret.
+
+Each player is given a character (15 total) that has some special abilities which make them unique.
+
+Each player has a number of bullets shown on their character card. The Sheriff plays the game with two additional bullets. The bullets you have are your life point and how many times you can be hit before being eliminated from play.
+
+All 9 Arrows are in the middle
+Sheriff starts the game and rolls all 5 die...
+-----------------------------------------------------
+The game is played in turns , in clockwise order.
+
+Roll all 5 dice
+
+You may then choose to keep the dice or re-roll some or all of them up to two times (3 total rolls). If you roll a third time you may also re-roll any dice you didn't choose to re-roll on your second roll. You must accept the third roll.
+
+When you are satisfied with your dice roll (or you're out of re-rolls ), the dice results
+
+Your turn is over and play passes to the player on your left
+----------------------------------------------------- 
+All arrows, after resolved, are returned to the central pile
+
+The Dice
+
+The dice show six different symbols. The symbols showing on the dice each have a different effect. You must apply all the dice results in the following order. You cannot pass on a rolled die: you must use them all!
+
+1. Indian Arrows
+
+You must resolve this die immediately when rolled, not at the end of your turn. Take one arrow token (one per arrow rolled) and keep it in front of you. You may roll this die again if you have re-rolls left.
+
+If you take the last arrow, the Indians attack and each player loses one life point for each arrow in front of him. After the attack, all players discard their arrows, and you resume your turn.
+
+2. Dynamite
+
+This die cannot be re-rolled! If you roll three or more Dynamites, your turn ends immediately and you lose one life point. But, all your other dice results are still resolved as normal.
+
+3a. Bull's Eye "1"
+
+Choose the player next to you on your left or right. That player loses one life point.
+
+3b. Bull's Eye "2"
+
+Choose the player exactly two places to your left or right. That player loses one life point. If there are only two or three players left in the game, treat this as (1s)
+
+(1s) and (2s) are resolved at the same time.
+
+5. Beer
+
+Choose any player: he gains one life point. You may choose yourself. You can never have more life points than the number you had at the beginning of the game. If you choose a player with his maximum life points, this result is wasted.
+
+6. Gatling
+
+If you roll three or more Gatlings you activate the Gatling Gun, and each of the other players loses one life point. Also, you discard all of your arrows.
