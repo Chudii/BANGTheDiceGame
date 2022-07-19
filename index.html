@@ -10,9 +10,26 @@
 </head>
 <body>
     <div class="container">
-        <div class="centerPile"></div>
+        <a href="https://www.ultraboardgames.com/bang/dice-game-rules.php" target="_blank">
+            <button id="infoInGameButton" class="btn btn-7"><img src="/images/buttons/infoIcon.png" class="btn-img">Rules</button>
+        </a>
+        <div class="centerPile">
+            <img src="/images/centralPile/indianArrow.png" class="centerArrow arrow">
+            <img src="/images/centralPile/indianArrow.png" class="centerArrow arrow">
+            <img src="/images/centralPile/indianArrow.png" class="centerArrow arrow">
+            <img src="/images/centralPile/indianArrow.png" class="centerArrow arrow">
+            <img src="/images/centralPile/indianArrow.png" class="centerArrow arrow">
+            <img src="/images/centralPile/indianArrow.png" class="centerArrow arrow">
+            <img src="/images/centralPile/indianArrow.png" class="centerArrow arrow">
+            <img src="/images/centralPile/indianArrow.png" class="centerArrow arrow">
+            <img src="/images/centralPile/indianArrow.png" class="centerArrow arrow">
+            <img src="/images/centralPile/indianArrow.png" class="centerArrow arrow">
+        </div>
         <div class="user card">
-            <h2 class="charName">Character</h2>
+            <div class="topLabel">
+                <h2 id="playerRole"></h2>
+                <h2 class="charName">Character</h2>
+            </div>
             <div class="charInfo">
                 <img src="/images/characters/bartCassidy.jpg" class="charImage">   
                 <p class="charDescription">This is where the character's ability is described.</p>
@@ -23,22 +40,9 @@
                     <img src="/images/centralPile/bullets.png" class="bulletIcon">
                     <h2 class="bulletTrackNum">8</h2>
                 </div>
-                <div class="arrows">
-                    <img src="/images/centralPile/indianArrow.png" class="arrow">
-                    <img src="/images/centralPile/indianArrow.png" class="arrow">
-                    <img src="/images/centralPile/indianArrow.png" class="arrow">
-                    <img src="/images/centralPile/indianArrow.png" class="arrow">
-                    <img src="/images/centralPile/indianArrow.png" class="arrow">
-                    <img src="/images/centralPile/indianArrow.png" class="arrow">
-                    <img src="/images/centralPile/indianArrow.png" class="arrow">
-                    <img src="/images/centralPile/indianArrow.png" class="arrow">
-                    <img src="/images/centralPile/indianArrow.png" class="arrow">
-                    <img src="/images/centralPile/indianArrow.png" class="arrow">
-                </div>
+                <div class="userArrows arrows"></div>
             </div>
-                
-                
-                <div class="dice">
+                <div class="dice" id="userDice">
                     <img src="/images/dice/arrowDice.jpg" class="userDie die1">
                     <img src="/images/dice/dynamiteDice.jpg" class="userDie die2">
                     <img src="/images/dice/bull1Dice.jpg" class="userDie die3">
@@ -48,43 +52,101 @@
             </div>
             <div class="buttons">
                 
-                <button id="resetButton">Reset</button>
-                <button id="abilityButton">Ability</button>
-                <button id="rollButton">Roll</button>
-                <button id="startButton">Start</button>
+                <button id="resetButton" class="btn btn-1"><img src="/images/buttons/resetIcon.png" class="btn-img">Reset</button>
+                <button id="abilityButton" class="btn btn-2" disabled><img src="/images/buttons/shieldIcon.png" class="btn-img">Ability</button>
+                <button id="resolveButton" class="btn btn-3" disabled><img src="/images/buttons/resolveIcon.png" class="btn-img">Resolve</button>
+                <button id="reserveButton" class="btn btn-4"><img src="/images/buttons/handIcon.png" class="btn-img">Reserve</button>
+                <button id="rollButton" class="btn btn-5"><img src="/images/buttons/diceIcon.png" class="btn-img">Roll</button>
             </div>
             
         </div>
-        <!-- <div class="compPlayer1 card">
-            <div class="dice">
-                <img src="/images/dice/arrowDice.jpg" id="firstCompDie1">
-                <img src="/images/dice/dynamiteDice.jpg" id="firstCompDie2">
-                <img src="/images/dice/bull1Dice.jpg" id="firstCompDie3">
-                <img src="/images/dice/bull2Dice.jpg" id="firstCompDie4">
-                <img src="/images/dice/beerDice.jpg" id="firstCompDie5">
-                <img src="/images/dice/gatlingDice.jpg" id="firstCompDie6">
+
+        <div class="compPlayer1 compPlayer card">
+            <h2 class="compName comp1" id="comp1Name">Character</h2>
+            <div class="compInfo comp1">
+                <img src="/images/characters/bartCassidy.jpg" class="compImage comp1" id="comp1Image">   
+                <p class="compDescription comp1" id="comp1Desc">This is where the character's ability is described.</p>
+            </div>
+            <div class="bulletsNArrows">
+                <div class="left">
+                    <div class="bullets">
+                        <img src="/images/centralPile/bullets.png" class="bulletIcon">
+                        <h2 class="compTrackNum comp2" id="comp1Track">8</h2>
+                    </div>
+                    <div class="arrows" id="comp1Arrows">
+                    </div>
+                </div>   
+                <div class="dice" id="comp1Dice">
+                    <img src="/images/dice/arrowDice.jpg" class="comp1Dice firstCompDie1">
+                    <img src="/images/dice/dynamiteDice.jpg" class="comp1Dice firstCompDie2">
+                    <img src="/images/dice/bull1Dice.jpg" class="comp1Dice firstCompDie3">
+                    <img src="/images/dice/beerDice.jpg" class="comp1Dice firstCompDie4">
+                    <img src="/images/dice/gatlingDice.jpg" class="comp1Dice firstCompDie5">
+                </div>
             </div>
         </div>
-        <div class="compPlayer2 card">
-            <div class="dice">
-                <img src="/images/dice/arrowDice.jpg" id="secondCompDie1">
-                <img src="/images/dice/dynamiteDice.jpg" id="secondCompDie2">
-                <img src="/images/dice/bull1Dice.jpg" id="secondCompDie3">
-                <img src="/images/dice/bull2Dice.jpg" id="secondCompDie4">
-                <img src="/images/dice/beerDice.jpg" id="secondCompDie5">
-                <img src="/images/dice/gatlingDice.jpg" id="secondCompDie6">
+
+        <div class="compPlayer2 compPlayer card">
+            <h2 class="compName comp2" id="comp2Name">Character</h2>
+            <div class="compInfo comp2">
+                <img src="/images/characters/bartCassidy.jpg" class="compImage comp2" id="comp2Image">   
+                <p class="compDescription comp2" id="comp2Desc">This is where the character's ability is described.</p>
+            </div>
+            <div class="bulletsNArrows">
+                <div class="left">
+                    <div class="bullets">
+                        <img src="/images/centralPile/bullets.png" class="bulletIcon">
+                        <h2 class="compTrackNum comp2" id="comp2Track">8</h2>
+                    </div>
+                    <div class="arrows" id="comp2Arrows">
+                    </div>
+                </div>
+                <div class="dice" id="comp2Dice">
+                    <img src="/images/dice/arrowDice.jpg" class="comp2Dice secondCompDie1">
+                    <img src="/images/dice/dynamiteDice.jpg" class="comp2Dice secondCompDie2">
+                    <img src="/images/dice/bull1Dice.jpg" class="comp2Dice secondCompDie3">
+                    <img src="/images/dice/beerDice.jpg" class="comp2Dice secondCompDie4">
+                    <img src="/images/dice/gatlingDice.jpg" class="comp2Dice secondCompDie5">
+                </div>
             </div>
         </div>
-        <div class="compPlayer3 card">
-            <div class="dice">
-                <img src="/images/dice/arrowDice.jpg" id="thirdCompDie1">
-                <img src="/images/dice/dynamiteDice.jpg" id="thirdCompDie2">
-                <img src="/images/dice/bull1Dice.jpg" id="thirdCompDie3">
-                <img src="/images/dice/bull2Dice.jpg" id="thirdCompDie4">
-                <img src="/images/dice/beerDice.jpg" id="thirdCompDie5">
-                <img src="/images/dice/gatlingDice.jpg" id="thirdCompDie6">
+ 
+        <div class="compPlayer3 compPlayer card">
+            <h2 class="compName comp3" id="comp3Name">Character</h2>
+            <div class="compInfo comp3">
+                <img src="/images/characters/bartCassidy.jpg" class="compImage comp3" id="comp3Image">   
+                <p class="compDescription comp2" id="comp3Desc">This is where the character's ability is described.</p>
             </div>
-        </div> -->
+            <div class="bulletsNArrows">
+                <div class="left">
+                    <div class="bullets">
+                        <img src="/images/centralPile/bullets.png" class="bulletIcon">
+                        <h2 class="compTrackNum comp3" id="comp3Track">8</h2>
+                    </div>
+                    <div class="arrows" id="comp3Arrows">
+                    </div>
+                </div>
+                <div class="dice" id="comp3Dice">
+                    <img src="/images/dice/arrowDice.jpg" class="comp3Dice thirdCompDie1">
+                    <img src="/images/dice/dynamiteDice.jpg" class="comp3Dice thirdCompDie2">
+                    <img src="/images/dice/bull1Dice.jpg" class="comp3Dice thirdCompDie3">
+                    <img src="/images/dice/beerDice.jpg" class="comp3Dice thirdCompDie4">
+                    <img src="/images/dice/gatlingDice.jpg" class="comp3Dice thirdCompDie5">
+                </div>
+            </div>
+        </div>
+
+        <img src="/images/centralPile/pointer.png" class="user-pointer pointer">
+        <img src="/images/centralPile/pointer.png" class="comp1-pointer pointer">
+        <img src="/images/centralPile/pointer.png" class="comp2-pointer pointer">
+        <img src="/images/centralPile/pointer.png" class="comp3-pointer pointer">
+    </div>
+    <div class="titleScreen">
+        <img src="/images/centralPile/bangLogo.png" class="bangLogo">
+        <button id="startButton" class="btn btn-6"><img src="/images/buttons/startIcon.png" class="btn-img">Start</button>
+        <a href="https://www.ultraboardgames.com/bang/dice-game-rules.php" target="_blank">
+            <button id="infoButton" class="btn btn-7"><img src="/images/buttons/infoIcon.png" class="btn-img">Rules</button>
+        </a>
     </div>
 </body>
 </html>
