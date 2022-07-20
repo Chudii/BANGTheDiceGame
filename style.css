@@ -20,6 +20,14 @@ body {
     align-items: center;
 }
 
+.status {
+    position: absolute;
+    top: 55%;
+    color: white;
+    font-family: 'Cormorant Unicase', serif;
+    font-size: 2rem;
+}
+
 .rulesPopUp {
     height: 80vh;
     width: 60vw;
