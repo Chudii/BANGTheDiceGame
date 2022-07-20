@@ -652,159 +652,6 @@ const getSelectedDice = function(evt) {
                     }
                     break
             }  
-        // } else if (target.getAttribute('src') === currentResolvedDice.getAttribute('src')) {
-        //     console.log('Wow')
-        //     target.classList.toggle('selected')
-        //     switch (target.getAttribute('src')) {
-        //         case diceImages[2]:
-        //             currentResolvedDice = target
-        //             if (cpuPlayer[0].active && cpuPlayer[2].active) {
-        //                 compPlayer1.style.borderColor = "white"
-        //                 compPlayer3.style.borderColor = "white"
-        //                 compPlayer1.removeEventListener('click', targetingComp1, {once: true})
-        //                 compPlayer3.removeEventListener('click', targetingComp3, {once: true})
-        //                 setTimeout(() => {
-        //                     compPlayer1.addEventListener('click', targetingComp1, {once: true})
-        //                     compPlayer3.addEventListener('click', targetingComp3, {once: true})
-        //                 }, 500)
-                        
-        //             }
-        //             break
-        //         case diceImages[3]:
-        //             currentResolvedDice = target
-        //             if (cpuPlayer[1].active) {
-        //                 compPlayer2.style.borderColor = "white"
-        //                 compPlayer2.removeEventListener('click', targetingComp2, {once: true})
-        //                 setTimeout(() => {
-        //                     compPlayer2.addEventListener('click', targetingComp2, {once: true})
-        //                 }, 500)
-        //             }
-        //             break
-        //         case diceImages[4]:
-        //             currentResolvedDice = target
-        //             if (cpuPlayer[0].active && cpuPlayer[1].active && cpuPlayer[2].active) {
-        //                 userCard.style.borderColor = "white"
-        //                 compPlayer1.style.borderColor = "white"
-        //                 compPlayer2.style.borderColor = "white"
-        //                 compPlayer3.style.borderColor = "white"
-        //                 charImage.removeEventListener('click', healingSelf, {once: true})
-        //                 compPlayer1.removeEventListener('click', healingComp1, {once: true})
-        //                 compPlayer2.removeEventListener('click', healingComp2, {once: true})
-        //                 compPlayer3.removeEventListener('click', healingComp3, {once: true})
-        //                 setTimeout(() => {
-        //                     charImage.addEventListener('click', healingSelf, {once: true})
-        //                     compPlayer1.addEventListener('click', healingComp1, {once: true})
-        //                     compPlayer2.addEventListener('click', healingComp2, {once: true})
-        //                     compPlayer3.addEventListener('click', healingComp3, {once: true})
-        //                 }, 500)    
-        //             }
-        //             break
-        //     }
-        // } else {
-        //     switch (currentResolvedDice.getAttribute('src')) {
-        //         case diceImages[2]:
-        //             switch (target.getAttribute('src')) {
-        //                 case diceImages[3]:
-        //                     target.classList.toggle('selected')
-        //                     currentResolvedDice = target
-        //                     if (cpuPlayer[1].active) {
-        //                         compPlayer1.style.borderColor = "black"
-        //                         compPlayer2.style.borderColor = "white"
-        //                         compPlayer3.style.borderColor = "black"
-        //                         compPlayer1.removeEventListener('click', targetingComp1, {once: true})
-        //                         compPlayer3.removeEventListener('click', targetingComp3, {once: true})
-        //                         compPlayer2.addEventListener('click', targetingComp2, {once: true})
-        //                     }
-        //                     break
-        //                 case diceImages[4]:
-        //                     target.classList.toggle('selected')
-        //                     currentResolvedDice = target
-            
-        //                     if (cpuPlayer[0].active && cpuPlayer[1].active && cpuPlayer[2].active) {
-        //                         userCard.style.borderColor = "white"
-        //                         compPlayer1.style.borderColor = "white"
-        //                         compPlayer2.style.borderColor = "white"
-        //                         compPlayer3.style.borderColor = "white"
-        //                         compPlayer1.removeEventListener('click', targetingComp1, {once: true})
-        //                         compPlayer3.removeEventListener('click', targetingComp3, {once: true})
-        //                         charImage.addEventListener('click', healingSelf, {once: true})
-        //                         compPlayer1.addEventListener('click', healingComp1, {once: true})
-        //                         compPlayer2.addEventListener('click', healingComp2, {once: true})
-        //                         compPlayer3.addEventListener('click', healingComp3, {once: true})
-        //                     }
-        //                     break
-        //             }
-        //             break
-        //         case diceImages[3]:
-        //             switch (target.getAttribute('src')) {
-        //                 case diceImages[2]:
-        //                     target.classList.toggle('selected')
-        //                     currentResolvedDice = target
-        //                     if (cpuPlayer[0].active && cpuPlayer[2].active) {
-        //                         compPlayer1.style.borderColor = "white"
-        //                         compPlayer2.style.borderColor = "black"
-        //                         compPlayer3.style.borderColor = "white"
-        //                         compPlayer2.removeEventListener('click', targetingComp2, {once: true})
-        //                         compPlayer1.addEventListener('click', targetingComp1, {once: true})
-        //                         compPlayer3.addEventListener('click', targetingComp3, {once: true})
-        //                     }
-        //                     break
-        //                 case diceImages[4]:
-        //                     target.classList.toggle('selected')
-        //                     currentResolvedDice = target
-        //                     if (cpuPlayer[0].active && cpuPlayer[1].active && cpuPlayer[2].active) {
-        //                         userCard.style.borderColor = "white"
-        //                         compPlayer1.style.borderColor = "white"
-        //                         compPlayer2.style.borderColor = "white"
-        //                         compPlayer3.style.borderColor = "white"
-        //                         compPlayer2.removeEventListener('click', targetingComp2, {once: true})
-        //                         charImage.addEventListener('click', healingSelf, {once: true})
-        //                         compPlayer1.addEventListener('click', healingComp1, {once: true})
-        //                         compPlayer2.addEventListener('click', healingComp2, {once: true})
-        //                         compPlayer3.addEventListener('click', healingComp3, {once: true})
-        //                     }
-        //                     break
-        //             }
-        //             break
-        //         case diceImages[4]:
-        //             switch (target.getAttribute('src')) {
-        //                 case diceImages[2]:
-        //                     target.classList.toggle('selected')
-        //                     currentResolvedDice = target
-        //                     if (cpuPlayer[0].active && cpuPlayer[2].active) {
-        //                         userCard.style.borderColor = "black"
-        //                         compPlayer1.style.borderColor = "white"
-        //                         compPlayer2.style.borderColor = "black"
-        //                         compPlayer3.style.borderColor = "white"
-        //                         charImage.removeEventListener('click', healingSelf, {once: true})
-        //                         compPlayer1.removeEventListener('click', healingComp1, {once: true})
-        //                         compPlayer2.removeEventListener('click', healingComp2, {once: true})
-        //                         compPlayer3.removeEventListener('click', healingComp3, {once: true})
-        //                         compPlayer1.addEventListener('click', targetingComp1, {once: true})
-        //                         compPlayer3.addEventListener('click', targetingComp3, {once: true})
-        //                     }
-        //                     break
-        //                 case diceImages[3]:
-        //                     target.classList.toggle('selected')
-        //                     currentResolvedDice = target
-        //                     if (cpuPlayer[1].active) {
-        //                         userCard.style.borderColor = "black"
-        //                         compPlayer1.style.borderColor = "black"
-        //                         compPlayer2.style.borderColor = "white"
-        //                         compPlayer3.style.borderColor = "black"
-        //                         charImage.removeEventListener('click', healingSelf, {once: true})
-        //                         compPlayer1.removeEventListener('click', healingComp1, {once: true})
-        //                         compPlayer2.removeEventListener('click', healingComp2, {once: true})
-        //                         compPlayer3.removeEventListener('click', healingComp3, {once: true})
-        //                         compPlayer2.addEventListener('click', targetingComp2, {once: true})
-        //                     }
-        //                     break
-        //             }
-        //             break
-        //     }
-        // }
-
-        
         
     }
 
@@ -1856,19 +1703,13 @@ const checkWinner = () => {
             }
             break
         case 'Outlaw':
-            cpuPlayer.forEach((cpu) => {
-                switch (cpu.role) {
-                    case 'Sheriff':
-                        if (!cpu.active) {
-                            mainScreen.style.display = "none"
-                            titleScreen.style.display = "flex"
-                            startButton.style.display = "none"
-                            rulesButtonTitle.style.display = "none"
-                            gameStatus.innerHTML = 'Good shot, Outlaw. You won.'
-                        }
-                        break
-                }
-            })
+            if (!sheriff.active) {
+                mainScreen.style.display = "none"
+                titleScreen.style.display = "flex"
+                startButton.style.display = "none"
+                rulesButtonTitle.style.display = "none"
+                gameStatus.innerHTML = 'Good shot, Outlaw. You won.'
+            }
             break
         case 'Renegade':
             if (!(sheriff.active) && cpuPlayer.length > 1) {
