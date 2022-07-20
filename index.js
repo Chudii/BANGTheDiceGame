@@ -40,7 +40,9 @@ const userPointer = document.querySelector('.user-pointer')
 \*********************************************************/
 
 const compPlayer1 = document.querySelector('.compPlayer1')
+const compPlayer1Back = document.querySelector('.compPlayer1Back')
 const comp1Name = document.querySelector('#comp1Name')
+const comp1Role = document.querySelector('#comp1Role')
 const comp1Image = document.querySelector('#comp1Image')
 const comp1Desc = document.querySelector('#comp1Desc')
 const comp1Track = document.querySelector('#comp1Track')
@@ -54,7 +56,9 @@ const comp1Pointer = document.querySelector('.comp1-pointer')
 \*********************************************************/
 
 const compPlayer2 = document.querySelector('.compPlayer2')
+const compPlayer2Back = document.querySelector('.compPlayer2Back')
 const comp2Name = document.querySelector('#comp2Name')
+const comp2Role = document.querySelector('#comp2Role')
 const comp2Image = document.querySelector('#comp2Image')
 const comp2Desc = document.querySelector('#comp2Desc')
 const comp2Track = document.querySelector('#comp2Track')
@@ -68,7 +72,9 @@ const comp2Pointer = document.querySelector('.comp2-pointer')
 \*********************************************************/
 
 const compPlayer3 = document.querySelector('.compPlayer3')
+const compPlayer3Back = document.querySelector('.compPlayer3Back')
 const comp3Name = document.querySelector('#comp3Name')
+const comp3Role = document.querySelector('#comp3Role')
 const comp3Image = document.querySelector('#comp3Image')
 const comp3Desc = document.querySelector('#comp3Desc')
 const comp3Track = document.querySelector('#comp3Track')
@@ -356,6 +362,7 @@ const roll = () => {
         let rolledDice = new Array(5)
 
         for (let i = 0; i < 5; i++) {
+            checkIfActive()
             if (userSavedDie[i]) {
                 rolledDice[i] = null
                 switch (userSavedDie[i]) {
@@ -388,7 +395,7 @@ const roll = () => {
             }
             if (rolledDice[i] === 0) {
                 resolveArrow()
-                
+                resolveAllArrows()
             } else if(rolledDice[i] === 1) {
                 userBlownDie.push(i)
             } else if(rolledDice[i] === 5) {
@@ -415,7 +422,7 @@ const roll = () => {
             rollButton.disabled = true;
             rollButton.style.opacity = "0.5"
             player.gatling = 0
-            checkResolvableDice()
+            (numOfResolvableDice === 0) ? checkResolvableDice() : null
             endingTurn()
             numOfResolvableDice = 0
         } else {
@@ -424,7 +431,6 @@ const roll = () => {
         }
         resolveButton.disabled = false;
         userSavedDie = new Array(5)
-        checkIfActive()
     }, 1000)
 }
 
@@ -498,23 +504,30 @@ const reserveDice = () => {
 const checkResolvableDice = () => {
     let userD = [...usersDice]
     userD.forEach(dice => {
-        switch(dice.getAttribute('src')) {
-            case diceImages[2]:
-                numOfResolvableDice++
-                break
-            case diceImages[3]:
-                numOfResolvableDice++
-                break
-            case diceImages[4]:
-                numOfResolvableDice++
-                break
+        if (!(dice.classList.contains('used'))) {
+            switch(dice.getAttribute('src')) {
+                case diceImages[2]:
+                    if (!(dice.classList.contains('used'))) {
+                        numOfResolvableDice++
+                    }
+                    break
+                case diceImages[3]:
+                    if (!(dice.classList.contains('used'))) {
+                        numOfResolvableDice++
+                    }
+                    break
+                case diceImages[4]:
+                    if (!(dice.classList.contains('used'))) {
+                        numOfResolvableDice++
+                    }
+                    break
+            }
         }
     })
 }
 
 const getSelectedDice = function(evt) {
     let target = evt.target
-    console.log(target.classList[1])
     
     let userD = [...usersDice]
     userD.forEach(dice => {
@@ -565,7 +578,6 @@ const getSelectedDice = function(evt) {
         } else if (target.getAttribute('src') === currentResolvedDice.getAttribute('src')) {
             console.log('Wow')
             target.classList.toggle('selected')
-            if (target)
             switch (target.getAttribute('src')) {
                 case diceImages[2]:
                     currentResolvedDice = target
@@ -607,9 +619,7 @@ const getSelectedDice = function(evt) {
                             compPlayer1.addEventListener('click', healingComp1, {once: true})
                             compPlayer2.addEventListener('click', healingComp2, {once: true})
                             compPlayer3.addEventListener('click', healingComp3, {once: true})
-                        }, 500)
-                        
-                        
+                        }, 500)    
                     }
                     break
             }
@@ -717,7 +727,7 @@ const getSelectedDice = function(evt) {
             }
         }
 
-
+        
         
     }
 
@@ -730,16 +740,19 @@ const endingTurn = () => {
         rollButton.innerHTML = `<img src="/images/buttons/startIcon.png" class="btn-img">End Turn`
         rollButton.removeEventListener('click', roll)
         rollButton.addEventListener('click', endTurn)
+        diceContainer.removeEventListener('click', getSelectedDice)
         rollButton.disabled = false
         rollButton.style.opacity = "1"
         resolveButton.disabled = true
         resolveButton.style.opacity = "0.5"
-    }
-}
-
-const checkPlayersActive = (player) => {
-    switch (player) {
         
+        charImage.removeEventListener('click', healingSelf, {once: true})
+        compPlayer1.removeEventListener('click', healingComp1, {once: true})
+        compPlayer2.removeEventListener('click', healingComp2, {once: true})
+        compPlayer3.removeEventListener('click', healingComp3, {once: true})
+        compPlayer1.removeEventListener('click', targetingComp1, {once: true})
+        compPlayer2.removeEventListener('click', targetingComp2, {once: true})
+        compPlayer3.removeEventListener('click', targetingComp3, {once: true})
     }
 }
 
@@ -780,31 +793,12 @@ const resolveDice = () => {
     rollButton.style.opacity = "0.5"
     resolveButton.disabled = true
     resolveButton.style.opacity = "0.5"
-
+    checkResolvableDice()
+    endingTurn()
     let userD = [...usersDice]
     userD.forEach(dice => {
         if (dice.classList.contains('selected')) {
             dice.classList.toggle('selected')
-        }
-        switch (dice.getAttribute('src')) {
-            case diceImages[2]:
-                if (!(dice.classList.contains('used'))) {
-                    numOfResolvableDice++
-                    console.log('Running')
-                }
-                break
-            case diceImages[3]:
-                if (!(dice.classList.contains('used'))) {
-                    numOfResolvableDice++
-                    console.log('Running')
-                }
-                break
-            case diceImages[4]:
-                if (!(dice.classList.contains('used'))) {
-                    numOfResolvableDice++
-                    console.log('Running')
-                }
-                break
         }
     })
     diceContainer.removeEventListener('click', listenToDice)
@@ -839,6 +833,53 @@ const uploadStats = () => {
             userRole.innerHTML = `<img src=${roleIcons[2]} class="outlawIcon">${player.role}`
             break
     }
+
+    cpuPlayer.forEach((cpu) => {
+        switch (cpu) {
+            case cpuPlayer[0]:
+                switch (cpu.role) {
+                    case 'Sheriff':
+                        comp1Role.innerHTML = `<img src=${roleIcons[0]} class="sheriffIcon">${cpu.role}`
+                        break
+                    case 'Renegade': 
+                        comp1Role.innerHTML = `<img src=${roleIcons[1]} class="renegadeIcon">${cpu.role}`
+                        break
+                    case 'Outlaw':
+                        comp1Role.innerHTML = `<img src=${roleIcons[2]} class="outlawIcon">${cpu.role}`
+                        break
+                }
+                break
+            case cpuPlayer[1]:
+                switch (cpu.role) {
+                    case 'Sheriff':
+                        comp2Role.innerHTML = `<img src=${roleIcons[0]} class="sheriffIcon">${cpu.role}`
+                        break
+                    case 'Renegade': 
+                        comp2Role.innerHTML = `<img src=${roleIcons[1]} class="renegadeIcon">${cpu.role}`
+                        break
+                    case 'Outlaw':
+                        comp2Role.innerHTML = `<img src=${roleIcons[2]} class="outlawIcon">${cpu.role}`
+                        break
+                }
+                break
+            case cpuPlayer[2]:
+                switch (cpu.role) {
+                    case 'Sheriff':
+                        comp3Role.innerHTML = `<img src=${roleIcons[0]} class="sheriffIcon">${cpu.role}`
+                        break
+                    case 'Renegade': 
+                        comp3Role.innerHTML = `<img src=${roleIcons[1]} class="renegadeIcon">${cpu.role}`
+                        break
+                    case 'Outlaw':
+                        comp3Role.innerHTML = `<img src=${roleIcons[2]} class="outlawIcon">${cpu.role}`
+                        break
+                }
+                break
+        }
+        
+    })
+
+    
 
     charName.innerHTML = player.character.name
     charImage.setAttribute('src', player.character.charImage)
@@ -878,7 +919,7 @@ const startGame = () => {
     appointSheriff()
     uploadStats()
     
-    
+    resolveButton.addEventListener('click', resolveDice)
     if (player.role === "Sheriff") {
         sheriff = player
     } else {
@@ -946,8 +987,46 @@ const resolveCompArrow = (compPlay) => {
 }
 
 const resolveAllArrows = () => {
+    
     if (centerArrow.length <= 0) {
-        // for (let i = 0; i < ; i++)
+        showStatus(userCard, 'hit')
+      
+        for (let i = 0; i < 10; i++) {
+            let newArrow = document.createElement('img')
+            newArrow.setAttribute('src', "/images/centralPile/indianArrow.png")
+            newArrow.classList.add('centerArrow')
+            newArrow.classList.add('arrow')
+            centerPile.appendChild(newArrow)
+        }
+
+        for (let i = userArrows.childElementCount; i > 0; i--) {
+            userArrows.removeChild(userArrows.childNodes[i - 1])
+            player.character.bullets--
+        }
+
+        if (cpuPlayer[0].active) {
+            for (let i = comp1Arrows.childElementCount; i > 0; i--) {
+                comp1Arrows.removeChild(comp1Arrows.childNodes[i - 1])
+                cpuPlayer[0].character.bullets--
+            }
+            showStatus(compPlayer1, 'hit')
+        }
+
+        if (cpuPlayer[1].active) {
+            for (let i = comp2Arrows.childElementCount; i > 0; i--) {
+                comp2Arrows.removeChild(comp2Arrows.childNodes[i - 1])
+                cpuPlayer[1].character.bullets--
+            }
+            showStatus(compPlayer2, 'hit')
+        }
+        
+        if (cpuPlayer[2].active) {
+            for (let i = comp3Arrows.childElementCount; i > 0; i--) {
+                comp3Arrows.removeChild(comp3Arrows.childNodes[i - 1])
+                cpuPlayer[2].character.bullets--
+            }
+            showStatus(compPlayer3, 'hit')
+        } 
     }
 }
 
@@ -991,11 +1070,11 @@ const resolveCompGatlingGun = (compPlay) => {
         case cpuPlayer[0]:
             if (cpuPlayer[1].active) {
                 cpuPlayer[1].character.bullets--
-                showStatus(compPlayer1, 'hit')
+                showStatus(compPlayer2, 'hit')
             }
             if (cpuPlayer[2].active) {
                 cpuPlayer[2].character.bullets--
-                showStatus(compPlayer2, 'hit')
+                showStatus(compPlayer3, 'hit')
             }
             cpuPlayer[0].gatling = 0
             cpuPlayer[0].arrows = 0
@@ -1063,6 +1142,14 @@ const resolveCompGatlingGun = (compPlay) => {
     }
 }
 
+const removeSelected = () => {
+    let userD = [...usersDice]
+    userD.forEach(dice => {
+        if (dice.classList.contains('selected')) {
+            dice.classList.toggle('selected')
+        }
+    })
+}
 /*********************************************************\
  * COMPUTER TARGET LISTENERS
 \*********************************************************/
@@ -1074,7 +1161,7 @@ const targetingComp1 = function() {
     cpuPlayer[0].character.bullets--
     showStatus(compPlayer1, 'hit')
     refreshStats()
-    currentResolvedDice.classList.toggle('selected')
+    removeSelected()
     currentResolvedDice.classList.add('used')
     numOfResolvableDice--
     endingTurn()
@@ -1087,7 +1174,7 @@ const targetingComp2 = function() {
     cpuPlayer[1].character.bullets--
     showStatus(compPlayer2, 'hit')
     refreshStats()
-    currentResolvedDice.classList.toggle('selected')
+    removeSelected()
     currentResolvedDice.classList.add('used')
     numOfResolvableDice--
     endingTurn()
@@ -1100,7 +1187,7 @@ const targetingComp3 = function() {
     cpuPlayer[2].character.bullets--
     showStatus(compPlayer3, 'hit') 
     refreshStats()
-    currentResolvedDice.classList.toggle('selected')
+    removeSelected()
     currentResolvedDice.classList.add('used')
     numOfResolvableDice--
     endingTurn()
@@ -1112,8 +1199,8 @@ const healingSelf = function() {
     compPlayer2.style.borderColor = "black"
     compPlayer3.style.borderColor = "black"
     resolveBeer(player)
+    removeSelected()
     showStatus(userCard, 'heal')
-    currentResolvedDice.classList.toggle('selected')
     currentResolvedDice.classList.add('used')
     numOfResolvableDice--
     endingTurn()
@@ -1125,8 +1212,8 @@ const healingComp1 = function() {
     compPlayer2.style.borderColor = "black"
     compPlayer3.style.borderColor = "black"
     resolveBeer(cpuPlayer[0])
+    removeSelected()
     showStatus(compPlayer1, 'heal')
-    currentResolvedDice.classList.toggle('selected')
     currentResolvedDice.classList.add('used')
     numOfResolvableDice--
     endingTurn()
@@ -1138,8 +1225,8 @@ const healingComp2 = function() {
     compPlayer2.style.borderColor = "black"
     compPlayer3.style.borderColor = "black"
     resolveBeer(cpuPlayer[1])
+    removeSelected()
     showStatus(compPlayer2, 'heal')
-    currentResolvedDice.classList.toggle('selected')
     currentResolvedDice.classList.add('used')
     numOfResolvableDice--
     endingTurn()
@@ -1151,8 +1238,8 @@ const healingComp3 = function() {
     compPlayer2.style.borderColor = "black"
     compPlayer3.style.borderColor = "black"
     resolveBeer(cpuPlayer[2])
+    removeSelected()
     showStatus(compPlayer3, 'heal')
-    currentResolvedDice.classList.toggle('selected')
     currentResolvedDice.classList.add('used')
     numOfResolvableDice--
     endingTurn()
@@ -1199,10 +1286,12 @@ const comp1Roll = () => {
         })
 
         for (let i = 0; i < 5; i++) {
+            checkIfActive()
             comp1RolledDice[i] = Math.floor(Math.random() * 6)
             comp1Dice[i].setAttribute('src', diceImages[comp1RolledDice[i]])
             if (comp1RolledDice[i] === 0) {
-                resolveCompArrow(cpuPlayer[0]) 
+                resolveCompArrow(cpuPlayer[0])
+                resolveAllArrows()
             } else if(comp1RolledDice[i] === 1) {
                 comp1BlownDie.push(i)
             } else if(comp1RolledDice[i] === 5) {
@@ -1249,15 +1338,17 @@ const comp1Roll = () => {
                                     showStatus(compPlayer2, 'hit')
                                 } else {
                                     player.character.bullets--
+                                    refreshStats()
                                     showStatus(userCard, 'hit')
                                 }
                             } else {
                                 player.character.bullets--
+                                refreshStats()
                                 showStatus(userCard, 'hit')
                             }
                             break
                         case 4:
-                            if (cpuPlayer[0].bullets < 4) {
+                            if (cpuPlayer[0].character.bullets < 6) {
                                 resolveBeer(cpuPlayer[0])
                                 showStatus(compPlayer1, 'heal')
                             } else if (cpuPlayer[0].role === "Renegade") {
@@ -1276,9 +1367,13 @@ const comp1Roll = () => {
                                     }
                                 } else {
                                     resolveBeer(cpuPlayer[0])
+                                    refreshStats()
                                     showStatus(compPlayer1, 'heal')
                                 }
-                                    
+                            } else {
+                                resolveBeer(cpuPlayer[0])
+                                refreshStats()
+                                showStatus(compPlayer1, 'heal')
                             }
                             break
                     }
@@ -1299,12 +1394,29 @@ const comp1Roll = () => {
         } else if (cpuPlayer[0].gatling > 2) {
             resolveCompGatlingGun(cpuPlayer[0])
         }
-        
+        comp1BlownDie = []
     }, 2000)
     checkIfActive()
     setTimeout(() => {
         if (cpuPlayer[1].active) {
             comp2Turn()
+        } else if (cpuPlayer[2].active) {
+            comp3Turn()
+        } else {
+            userPointer.style.display = "block"
+            comp1Pointer.style.display = "none"
+            comp2Pointer.style.display = "none"
+            comp3Pointer.style.display = "none"
+            rollButton.disabled = false
+            rollButton.style.opacity = "1"
+            rollButton.removeEventListener('click', endTurn)
+            rollButton.innerHTML = `<img src="/images/buttons/diceIcon.png" class="btn-img">Roll`
+            player.rolls = 3
+            currentResolvedDice = null
+            userBlownDie = []
+
+            player.gatling = 0
+            rollButton.addEventListener('click', roll)
         }
     }, 7000)
 }
@@ -1328,10 +1440,12 @@ const comp2Roll = () => {
         })
 
         for (let i = 0; i < 5; i++) {
+            checkIfActive()
             comp2RolledDice[i] = Math.floor(Math.random() * 6)
             comp2Dice[i].setAttribute('src', diceImages[comp2RolledDice[i]])
             if (comp2RolledDice[i] === 0) {
-                resolveCompArrow(cpuPlayer[1]) 
+                resolveCompArrow(cpuPlayer[1])
+                resolveAllArrows()
             } else if(comp2RolledDice[i] === 1) {
                 comp2BlownDie.push(i)
             } else if(comp2RolledDice[i] === 5) {
@@ -1372,8 +1486,9 @@ const comp2Roll = () => {
                             player.character.bullets--
                             refreshStats()
                             showStatus(userCard, 'hit')
+                            break
                         case 4:
-                            if (cpuPlayer[1].bullets < 4) {
+                            if (cpuPlayer[1].character.bullets < 6) {
                                 resolveBeer(cpuPlayer[1])
                                 showStatus(compPlayer2, 'heal')
                             } else if (cpuPlayer[1].role === "Renegade") {
@@ -1390,18 +1505,24 @@ const comp2Roll = () => {
                                             showStatus(compPlayer3, 'heal')
                                             break
                                     }
+                                    refreshStats()
                                 } else {
                                     resolveBeer(cpuPlayer[1])
+                                    refreshStats()
                                     showStatus(compPlayer2, 'heal')
-                                }
-                                    
+                                } 
+                            } else {
+                                resolveBeer(cpuPlayer[1])
+                                refreshStats()
+                                showStatus(compPlayer2, 'heal')
                             }
                             break
                     }
-                }, 2000)
-                
+                }, 2000)    
             }
+            
         }
+        checkIfActive()
         comp2DiceRoll = [...comp2RolledDice]
         if (comp2BlownDie.length > 2) {
             cpuPlayer[1].character.bullets--
@@ -1410,17 +1531,44 @@ const comp2Roll = () => {
             if (cpuPlayer[2].active) {
                 comp3Turn()
             } else {
-                // comp3Turn()
+                userPointer.style.display = "block"
+                comp1Pointer.style.display = "none"
+                comp2Pointer.style.display = "none"
+                comp3Pointer.style.display = "none"
+                rollButton.disabled = false
+                rollButton.style.opacity = "1"
+                rollButton.removeEventListener('click', endTurn)
+                rollButton.innerHTML = `<img src="/images/buttons/diceIcon.png" class="btn-img">Roll`
+                player.rolls = 3
+                currentResolvedDice = null
+                userBlownDie = []
+    
+                player.gatling = 0
+                rollButton.addEventListener('click', roll)
             }
         } else if (cpuPlayer[1].gatling > 2) {
             resolveCompGatlingGun(cpuPlayer[1])
         }
-        
+        comp2BlownDie = []
     }, 2000)
-    checkIfActive()
     setTimeout(() => {
         if (cpuPlayer[2].active) {
             comp3Turn()
+        } else {
+            userPointer.style.display = "block"
+            comp1Pointer.style.display = "none"
+            comp2Pointer.style.display = "none"
+            comp3Pointer.style.display = "none"
+            rollButton.disabled = false
+            rollButton.style.opacity = "1"
+            rollButton.removeEventListener('click', endTurn)
+            rollButton.innerHTML = `<img src="/images/buttons/diceIcon.png" class="btn-img">Roll`
+            player.rolls = 3
+            currentResolvedDice = null
+            userBlownDie = []
+
+            player.gatling = 0
+            rollButton.addEventListener('click', roll)
         }
     }, 7000)
 }
@@ -1444,10 +1592,12 @@ const comp3Roll = () => {
         })
 
         for (let i = 0; i < 5; i++) {
+            checkIfActive()
             comp3RolledDice[i] = Math.floor(Math.random() * 6)
             comp3Dice[i].setAttribute('src', diceImages[comp3RolledDice[i]])
             if (comp3RolledDice[i] === 0) {
-                resolveCompArrow(cpuPlayer[2]) 
+                resolveCompArrow(cpuPlayer[2])
+                resolveAllArrows()
             } else if(comp3RolledDice[i] === 1) {
                 comp3BlownDie.push(i)
             } else if(comp3RolledDice[i] === 5) {
@@ -1504,7 +1654,7 @@ const comp3Roll = () => {
                             }
                             break
                         case 4:
-                            if (cpuPlayer[2].bullets < 4) {
+                            if (cpuPlayer[2].character.bullets < 6) {
                                 resolveBeer(cpuPlayer[2])
                                 showStatus(compPlayer3, 'heal')
                             } else if (cpuPlayer[2].role === "Renegade") {
@@ -1525,12 +1675,17 @@ const comp3Roll = () => {
                                     resolveBeer(cpuPlayer[2])
                                     showStatus(compPlayer3, 'heal')
                                 }
+                            } else {
+                                resolveBeer(cpuPlayer[2])
+                                showStatus(compPlayer3, 'heal')
                             }
                             break
                     }
                 }, 2000)
-                
+                comp3BlownDie = []
             }
+            
+            checkIfActive()
         }
         comp3DiceRoll = [...comp3RolledDice]
         if (comp3BlownDie.length > 2) {
@@ -1558,9 +1713,12 @@ const comp3Roll = () => {
         rollButton.removeEventListener('click', endTurn)
         rollButton.innerHTML = `<img src="/images/buttons/diceIcon.png" class="btn-img">Roll`
         player.rolls = 3
+        currentResolvedDice = null
+        userBlownDie = []
+
         player.gatling = 0
         rollButton.addEventListener('click', roll)
-    }, 2000)
+    }, 7000)
 }
 
 const checkIfActive = () => {
@@ -1568,12 +1726,37 @@ const checkIfActive = () => {
         if (cpu.character.bullets < 1) {
             cpu.active = false
             cpu.cardRevealed = true
+            console.log(`${cpu} has died`)
+        }
+
+        if (cpu.cardRevealed) {
+            switch (cpu) {
+                case cpuPlayer[0]:
+                    comp1Pointer.style.display = "none"
+                    compPlayer1Back.style.display = "flex"
+                    break
+                case cpuPlayer[1]:
+                    comp2Pointer.style.display = "none"
+                    compPlayer2Back.style.display = "flex"
+                    break
+                case cpuPlayer[2]:
+                    comp3Pointer.style.display = "none"
+                    compPlayer3Back.style.display = "flex"
+                    break
+            }
         }
     })
-}
+    if (player.character.bullets < 1) {
+        player.active = false
+    }
 
-compPlayer2.addEventListener('click', targetingComp2)
-compPlayer3.addEventListener('click', targetingComp3)
+    if (!(player.active)) {
+        mainScreen.style.display = "none"
+        titleScreen.style.display = "flex"
+        startButton.style.display = "none"
+        rulesButtonTitle.style.display = "none"
+    }
+}
 
 /*********************************************************\
  * BUTTON LISTENERS
@@ -1582,5 +1765,5 @@ compPlayer3.addEventListener('click', targetingComp3)
 resetButton.addEventListener('click', reset)
 rollButton.addEventListener('click', roll)
 reserveButton.addEventListener('click', reserveDice)
-resolveButton.addEventListener('click', resolveDice)
+
 startButton.addEventListener('click', startGame)

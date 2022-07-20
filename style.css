@@ -2,6 +2,8 @@
 
 body {
     background-color:burlywood;
+    background: url('/images/centralPile/saloon.jpg') no-repeat center center fixed;
+    background-size: cover;
 }
 
 .container {
@@ -67,7 +69,10 @@ body {
     right: 6.7%;
 }
 
-
+.back {
+    justify-content: center;
+    border: 3px solid black;
+}
 
 .user {
     height: 40vh;
@@ -80,14 +85,23 @@ body {
 
 .compPlayer1 {
     height: 62vh;
-    width: 25vw;
+    width: 22vw;
     display: flex;
     justify-content: space-evenly;
     background-color: rgb(212, 207, 162);
     position: fixed;
-    left: 2vw;
+    left: 4vw;
     top: 15%;
+}
 
+.compPlayer1Back {
+    display: none;
+    position: fixed;
+    left: 4vw;
+    top: 15%;
+    background-color: rgb(212, 207, 162);
+    height: 62vh;
+    width: 22vw;
 }
 
 .compInfo.comp1 {
@@ -109,8 +123,17 @@ img.comp1 {
     background-color: #AA968A;
     display: flex;
     justify-content: space-around;
-    position: fixed;
+    position: absolute;
     top: 2vh;
+}
+
+.compPlayer2Back {
+    height: 32vh;
+    width: 40vw;
+    position: absolute;
+    display: none;
+    top: 2vh;
+    background-color: #AA968A;
 }
 
 .compInfo.comp2 {
@@ -129,12 +152,22 @@ img.comp2 {
 
 .compPlayer3 {
     height: 62vh;
-    width: 25vw;
-    display: flex;
+    width: 22vw;
+    display: block;
     justify-content: space-evenly;
     background-color: #F1AB86;
     position: absolute;
-    right: 2vw;
+    right: 4vw;
+    top: 15%;
+}
+
+.compPlayer3Back {
+    height: 62vh;
+    width: 22vw;
+    display: none;
+    position: absolute;
+    background-color: #F1AB86;
+    right: 4vw;
     top: 15%;
 }
 
@@ -214,7 +247,7 @@ img.comp3 {
     flex-direction: row;
 }
 
-#playerRole {
+#playerRole, #comp1Role, #comp2Role, #comp3Role {
     display: flex;
     align-self: center;
     align-items: center;
