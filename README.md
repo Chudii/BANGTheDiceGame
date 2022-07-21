@@ -37,7 +37,7 @@ Check out the Rules Page for a description of the characters, their abilities, a
 
 ## Authors
 
-* **Chudi Ibida** - *Initial work* - [Chudi](https://github.comChudii)
+* **Chudi Ibida** - *Initial work* - [Chudi](https://github.com/Chudii)
 
 
 
