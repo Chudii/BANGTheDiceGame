@@ -1,16 +1,16 @@
 let roles = ['Sheriff', 'Renegade', 'Outlaw', 'Outlaw']
 let roleIcons = [
-    "/images/roles/sheriff.png",
-    "/images/roles/renegade.png",
-    "/images/roles/outlaw.png"
+    "images/roles/sheriff.png",
+    "images/roles/renegade.png",
+    "images/roles/outlaw.png"
 ]
 let diceImages = [
-    "/images/dice/arrowDice.jpg",
-    "/images/dice/dynamiteDice.jpg",
-    "/images/dice/bull1Dice.jpg",
-    "/images/dice/bull2Dice.jpg",
-    "/images/dice/beerDice.jpg",
-    "/images/dice/gatlingDice.jpg"
+    "images/dice/arrowDice.jpg",
+    "images/dice/dynamiteDice.jpg",
+    "images/dice/bull1Dice.jpg",
+    "images/dice/bull2Dice.jpg",
+    "images/dice/beerDice.jpg",
+    "images/dice/gatlingDice.jpg"
 ]
 
 /*********************************************************\
@@ -109,112 +109,112 @@ let char = [
     {
         name: 'Bart Cassidy',     
         bullets: 8,
-        charImage: "/images/characters/bartCassidy.jpg",
+        charImage: "images/characters/bartCassidy.jpg",
         charDescription: `You may take an arrow instead of losing a life point (except to Arrows and Dynamite). You cannot use this ability if you lose a life point to an Arrow or Dynamite, only for (1s), (2s), or Gatling Guns. You may not use this ability to take the last arrow remaining in the pile.`,
         pickMyPoison() {}
     },
     {
         name: 'Black Jack',
         bullets: 8,
-        charImage: "/images/characters/blackJack.jpg",
+        charImage: "images/characters/blackJack.jpg",
         charDescription: `You may re-roll Dynamites (unless if you roll 3 or more).`,
         explosiveExpertise() {}
     },
     {
         name: 'Calamity Janet', 
         bullets: 8,
-        charImage: "/images/characters/calamityJanet.jpg",
+        charImage: "images/characters/calamityJanet.jpg",
         charDescription: `You can use (1s) as (2s) and vice versa.`,
         freeReach() {}
     },
     {
         name: 'El Gringo', 
         bullets: 7,
-        charImage: "/images/characters/elGringo.jpg",
+        charImage: "images/characters/elGringo.jpg",
         charDescription: `When a player makes you lose one or more life points, he must take an arrow. No change to life points lost by dynamite or arrows.`,
         takeThisWithYou() {}
     },
     {
         name: 'Jesse Jones', 
         bullets: 9,
-        charImage: "/images/characters/jesseJones.jpg",
+        charImage: "images/characters/jesseJones.jpg",
         charDescription: `If you have four life points or less, you gain two if you use Beer for yourself. For example, if you have four life points and use two beers, you get four life points.`,
         quickRecover() {}
     },
     {
         name: 'Jourdonnais', 
         bullets: 7,
-        charImage: "/images/characters/jourdonnais.jpg",
+        charImage: "images/characters/jourdonnais.jpg",
         charDescription: `You never lose more than one life point to arrows.`,
         evasionTactics() {}
     },
     {
         name: 'Kit Carlson', 
         bullets: 7,
-        charImage: "/images/characters/kitCarlson.jpg",
+        charImage: "images/characters/kitCarlson.jpg",
         charDescription: `For each Gatling you may discard one arrow from any player.`,
         deliverance() {}
     },
     {
         name: 'Lucky Duke', 
         bullets: 8,
-        charImage: "/images/characters/luckyDuke.jpg",
+        charImage: "images/characters/luckyDuke.jpg",
         charDescription: `You may makeone extra re-roll. You may roll the dice a total of 4 times on your turn.`,
         testMyLuck() {}
     },
     {
         name: 'Paul Regret', 
         bullets: 9,
-        charImage: "/images/characters/paulRegret.jpg",
+        charImage: "images/characters/paulRegret.jpg",
         charDescription: `You never lose life points to the Gatling Gun.`,
         coldBlooded() {}
     },
     {
         name: 'Pedro Ramirez', 
         bullets: 8,
-        charImage: "/images/characters/pedroRamirez.jpg",
+        charImage: "images/characters/pedroRamirez.jpg",
         charDescription: `Each time you lose a life point, you may discard one of your arrows. You still use the life point when you use this ability.`,
         paidDebts() {}
     },
     {
         name: 'Rose Doolan', 
         bullets: 9,
-        charImage: "/images/characters/roseDoolan.jpg",
+        charImage: "images/characters/roseDoolan.jpg",
         charDescription: `You may use (1s) or (2s) for players sitting one place further. With (1s) you may hit a player sitting two or three places away.`,
         higherRange() {}
     },
     {
         name: 'Sid Ketchum', 
         bullets: 8,
-        charImage: "/images/characters/sidKetchum.jpg",
+        charImage: "images/characters/sidKetchum.jpg",
         charDescription: `At the beginning of your turn, any player of your choice gains one life point. You may also choose yourself.`,
         rememdy() {}
     },
     {
         name: 'Slab the Killer', 
         bullets: 8,
-        charImage: "/images/characters/slabTheKiller.jpg",
+        charImage: "images/characters/slabTheKiller.jpg",
         charDescription: `Once per turn, you can use a Beer to double a (1s) or (2s). The The dice you double takes two life points away from the same player (You cannot choose two different players). The Beer in this case does not provide any life points.`,
         doubleDamage() {}
     },
     {
         name: 'Suzy Lafayatte', 
         bullets: 8,
-        charImage: "/images/characters/suzyLafayette.jpg",
+        charImage: "images/characters/suzyLafayette.jpg",
         charDescription: `If you didnt roll any (1s) or (2s), you gain two life points. This only applies at the end of your turn, not during your re-rolls.`,
         nonviolencePays() {}
     },
     {
         name: 'Vulture Sam', 
         bullets: 9,
-        charImage: "/images/characters/vultureSam.jpg",
+        charImage: "images/characters/vultureSam.jpg",
         charDescription: `Each time a player is eliminated, you gain two life points.`,
         soulSteal() {}
     },
     {
         name: 'Willy the Kid', 
         bullets: 8,
-        charImage: "/images/characters/willyTheKid.jpg",
+        charImage: "images/characters/willyTheKid.jpg",
         charDescription: `You only need 2 Gatlings to use the Gatling Gun. You can active the Gatling Gun only once per turn even if you roll more than two Gatling results.`,
         triggerHappy() {}
     }
@@ -455,7 +455,7 @@ const select = (evt) => {
     let target = evt.target
     if (target.classList.contains('selected')) {
         target.classList.toggle('selected')
-    } else if (!(target.getAttribute('src') === "/images/dice/dynamiteDice.jpg")) {
+    } else if (!(target.getAttribute('src') === "images/dice/dynamiteDice.jpg")) {
         target.classList.add('selected')
     } else {
         return console.log('Error in select function')
@@ -661,7 +661,7 @@ const getSelectedDice = function(evt) {
 
 const endingTurn = () => {
     if (numOfResolvableDice < 1) {
-        rollButton.innerHTML = `<img src="/images/buttons/startIcon.png" class="btn-img">End Turn`
+        rollButton.innerHTML = `<img src="images/buttons/startIcon.png" class="btn-img">End Turn`
         rollButton.removeEventListener('click', roll)
         rollButton.addEventListener('click', endTurn)
         diceContainer.removeEventListener('click', getSelectedDice)
@@ -876,7 +876,7 @@ const resolveArrow = () => {
     console.log('Arrows: ' + player.arrows)
     setTimeout(() => {
         let newArrow = document.createElement('img')
-        newArrow.setAttribute('src', "/images/centralPile/indianArrow.png")
+        newArrow.setAttribute('src', "images/centralPile/indianArrow.png")
         newArrow.classList.add('userArrow')
         newArrow.classList.add('arrow')
 
@@ -888,7 +888,7 @@ const resolveArrow = () => {
 const resolveCompArrow = (compPlay) => {
     compPlay.arrows++
     let newArrow = document.createElement('img')
-    newArrow.setAttribute('src', "/images/centralPile/indianArrow.png")
+    newArrow.setAttribute('src', "images/centralPile/indianArrow.png")
     switch (compPlay) {
         case cpuPlayer[0]:
             newArrow.classList.add('arrow')
@@ -918,7 +918,7 @@ const resolveAllArrows = () => {
       
         for (let i = 0; i < 10; i++) {
             let wholeNewArrow = document.createElement('img')
-            wholeNewArrow.setAttribute('src', "/images/centralPile/indianArrow.png")
+            wholeNewArrow.setAttribute('src', "images/centralPile/indianArrow.png")
             wholeNewArrow.classList.add('centerArrow')
             wholeNewArrow.classList.add('arrow')
             centerPile.appendChild(wholeNewArrow)
@@ -984,7 +984,7 @@ const resolveGatlingGun = () => {
     player.arrows = 0
     setTimeout(() => {
         let newArrow = document.createElement('img')
-        newArrow.setAttribute('src', "/images/centralPile/indianArrow.png")
+        newArrow.setAttribute('src', "images/centralPile/indianArrow.png")
         newArrow.classList.add('centerArrow')
         newArrow.classList.add('arrow')
 
@@ -1002,7 +1002,7 @@ const returnArrows = (somePlayer) => {
             let playerArrowCount = userArrows.childElementCount
             for (let i = 0; i < playerArrowCount; i++) {
                 let newArrow = document.createElement('img')
-                newArrow.setAttribute('src', "/images/centralPile/indianArrow.png")
+                newArrow.setAttribute('src', "images/centralPile/indianArrow.png")
                 newArrow.classList.add('centerArrow')
                 newArrow.classList.add('arrow')
                 centerPile.appendChild(newArrow)
@@ -1014,7 +1014,7 @@ const returnArrows = (somePlayer) => {
             let comp1ArrowCount = comp1Arrows.childElementCount
             for (let i = 0; i < comp1ArrowCount; i++) {
                 let newArrow = document.createElement('img')
-                newArrow.setAttribute('src', "/images/centralPile/indianArrow.png")
+                newArrow.setAttribute('src', "images/centralPile/indianArrow.png")
                 newArrow.classList.add('centerArrow')
                 newArrow.classList.add('arrow')
                 centerPile.appendChild(newArrow)
@@ -1026,7 +1026,7 @@ const returnArrows = (somePlayer) => {
             let comp2ArrowCount = comp2Arrows.childElementCount
             for (let i = 0; i < comp2ArrowCount; i++) {
                 let newArrow = document.createElement('img')
-                newArrow.setAttribute('src', "/images/centralPile/indianArrow.png")
+                newArrow.setAttribute('src', "images/centralPile/indianArrow.png")
                 newArrow.classList.add('centerArrow')
                 newArrow.classList.add('arrow')
                 centerPile.appendChild(newArrow)
@@ -1038,7 +1038,7 @@ const returnArrows = (somePlayer) => {
             let comp3ArrowCount = comp3Arrows.childElementCount
             for (let i = 0; i < comp3ArrowCount; i++) {
                 let newArrow = document.createElement('img')
-                newArrow.setAttribute('src', "/images/centralPile/indianArrow.png")
+                newArrow.setAttribute('src', "images/centralPile/indianArrow.png")
                 newArrow.classList.add('centerArrow')
                 newArrow.classList.add('arrow')
                 centerPile.appendChild(newArrow)
@@ -1066,7 +1066,7 @@ const resolveCompGatlingGun = (compPlay) => {
             cpuPlayer[0].arrows = 0
             setTimeout(() => {
                 let newArrow = document.createElement('img')
-                newArrow.setAttribute('src', "/images/centralPile/indianArrow.png")
+                newArrow.setAttribute('src', "images/centralPile/indianArrow.png")
                 newArrow.classList.add('centerArrow')
                 newArrow.classList.add('arrow')
 
@@ -1090,7 +1090,7 @@ const resolveCompGatlingGun = (compPlay) => {
             cpuPlayer[0].arrows = 0
             setTimeout(() => {
                 let newArrow = document.createElement('img')
-                newArrow.setAttribute('src', "/images/centralPile/indianArrow.png")
+                newArrow.setAttribute('src', "images/centralPile/indianArrow.png")
                 newArrow.classList.add('centerArrow')
                 newArrow.classList.add('arrow')
 
@@ -1114,7 +1114,7 @@ const resolveCompGatlingGun = (compPlay) => {
             cpuPlayer[2].arrows = 0
             setTimeout(() => {
                 let newArrow = document.createElement('img')
-                newArrow.setAttribute('src', "/images/centralPile/indianArrow.png")
+                newArrow.setAttribute('src', "images/centralPile/indianArrow.png")
                 newArrow.classList.add('centerArrow')
                 newArrow.classList.add('arrow')
 
@@ -1397,7 +1397,7 @@ const comp1Roll = () => {
             rollButton.disabled = false
             rollButton.style.opacity = "1"
             rollButton.removeEventListener('click', endTurn)
-            rollButton.innerHTML = `<img src="/images/buttons/diceIcon.png" class="btn-img">Roll`
+            rollButton.innerHTML = `<img src="images/buttons/diceIcon.png" class="btn-img">Roll`
             player.rolls = 3
             currentResolvedDice = null
             userBlownDie = []
@@ -1534,7 +1534,7 @@ const comp2Roll = () => {
             rollButton.disabled = false
             rollButton.style.opacity = "1"
             rollButton.removeEventListener('click', endTurn)
-            rollButton.innerHTML = `<img src="/images/buttons/diceIcon.png" class="btn-img">Roll`
+            rollButton.innerHTML = `<img src="images/buttons/diceIcon.png" class="btn-img">Roll`
             player.rolls = 3
             currentResolvedDice = null
             userBlownDie = []
@@ -1681,7 +1681,7 @@ const comp3Roll = () => {
         rollButton.disabled = false
         rollButton.style.opacity = "1"
         rollButton.removeEventListener('click', endTurn)
-        rollButton.innerHTML = `<img src="/images/buttons/diceIcon.png" class="btn-img">Roll`
+        rollButton.innerHTML = `<img src="images/buttons/diceIcon.png" class="btn-img">Roll`
         player.rolls = 3
         currentResolvedDice = null
         userBlownDie = []
