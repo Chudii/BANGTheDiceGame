@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Unicase:wght@700&family=Julius+Sans+One&family=Mate+SC&display=swap');
 
 body {
-    background-color:burlywood;
     background: url('images/centralPile/saloon.jpg') no-repeat center center fixed;
     background-size: cover;
 }
